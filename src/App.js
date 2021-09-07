@@ -9,7 +9,6 @@ export default class App extends React.Component {
   };
 
   handleFormSubmit = someName => {
-    console.log(someName);
     this.setState({ name: someName });
   };
 

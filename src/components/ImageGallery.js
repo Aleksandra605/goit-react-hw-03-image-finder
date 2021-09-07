@@ -2,6 +2,8 @@ import s from './common-styles.module.css';
 import React from 'react';
 import ImageGalleryItem from './ImageGalleryItem';
 import Loader from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class ImageGallery extends React.Component {
   state = {
@@ -11,12 +13,12 @@ export default class ImageGallery extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.name !== this.props.name) {
-      this.setState({ loading: true });
+      this.setState({ loading: true, pictures: null });
       setTimeout(() => {
         return this.fetchArticles(this.props.name).finally(
           this.setState({ loading: false }),
         );
-      }, 2000);
+      }, 7000);
     }
   }
 
@@ -46,16 +48,21 @@ export default class ImageGallery extends React.Component {
         // return hits;
       })
       .catch(error => {
-        console.log(error);
-        this.setState({ error });
+        // console.log(error);
+        this.setState({ pictures: undefined });
+        toast.error('No results were found for your search!');
+        // this.setState({ error });
       });
   };
 
   render() {
     return (
-      <div>
+      <div className={s.contentBox}>
+        {this.state.pictures === undefined && (
+          <ToastContainer position="top-center" />
+        )}
         {!this.state.pictures ? (
-          <div className={s.div}>Enter somethimg</div>
+          <p className={s.div}>Enter somethimg</p>
         ) : (
           <ul className={s.list}>
             {this.state.pictures.map(picture => (
@@ -69,7 +76,13 @@ export default class ImageGallery extends React.Component {
         )}
         {this.state.loading && (
           <div className={s.divLoader}>
-            <Loader type="Oval" color="#0b6470" height={50} width={50} />
+            <Loader
+              type="MutatingDots"
+              color="#0b6470"
+              secondaryColor="rgb(72, 163, 185)"
+              height={100}
+              width={100}
+            />
           </div>
         )}
       </div>
