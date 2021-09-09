@@ -16,7 +16,12 @@ export default class ImageGallery extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const prevName = prevProps.name;
     const newName = this.props.name;
-    const page = this.state.page;
+    const page = 1;
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
 
     if (prevName !== newName) {
       this.setState({ status: 'pending', pictures: null });
@@ -38,8 +43,9 @@ export default class ImageGallery extends React.Component {
   }
 
   getMorePictures = data => {
+    console.log(data);
     return this.setState(prevState => ({
-      pictures: [...prevState.pictures, data],
+      pictures: [...prevState.pictures, ...data],
     }));
   };
 
@@ -76,7 +82,7 @@ export default class ImageGallery extends React.Component {
               <ImageGalleryItem
                 src={picture.webformatURL}
                 alt={picture.tags}
-                id={picture.id}
+                key={picture.id}
               />
             ))}
           </ul>

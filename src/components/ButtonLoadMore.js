@@ -15,7 +15,7 @@ export default class ButtonLoadMore extends React.Component {
     this.incrementPage();
     setTimeout(() => {
       this.callToApi();
-    }, 5000);
+    }, 500);
   };
 
   callToApi = () => {
@@ -23,7 +23,7 @@ export default class ButtonLoadMore extends React.Component {
     const page = this.state.page;
     console.log(page);
 
-    return fetchAPI(name, page).then(data => onLoadMore(data));
+    return fetchAPI(name, page).then(data => onLoadMore(data.hits));
   };
 
   render() {
