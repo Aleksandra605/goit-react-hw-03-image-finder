@@ -15,11 +15,13 @@ export default class Searchbar extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.name.trim() === '') {
+    const { name } = this.state;
+
+    if (name.trim() === '') {
       alert('Enter a word');
       return;
     }
-    this.props.onSubmit(this.state.name.trim());
+    this.props.onSubmit(name.trim());
     this.reset();
   };
 

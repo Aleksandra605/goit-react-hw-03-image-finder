@@ -3,9 +3,9 @@ import React from 'react';
 
 export default class ImageGalleryItem extends React.Component {
   render() {
-    const { src, alt } = this.props;
+    const { src, alt, id } = this.props;
     return (
-      <li className={s.item}>
+      <li className={s.item} key={id}>
         <img
           src={src}
           alt={alt}
