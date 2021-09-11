@@ -22,10 +22,10 @@ export default class ImageGallery extends React.Component {
     const newName = this.props.name;
     const page = 1;
 
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
+    // window.scrollTo({
+    //   top: document.documentElement.scrollHeight,
+    //   behavior: 'smooth',
+    // });
 
     if (prevName !== newName) {
       this.setState({ status: 'pending', pictures: null });
@@ -47,9 +47,14 @@ export default class ImageGallery extends React.Component {
   }
 
   getMorePictures = data => {
-    return this.setState(prevState => ({
+    this.setState(prevState => ({
       pictures: [...prevState.pictures, ...data],
     }));
+
+    return window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
   };
 
   openModal = event => {
