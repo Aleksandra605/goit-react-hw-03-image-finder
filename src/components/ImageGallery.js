@@ -65,7 +65,6 @@ export default class ImageGallery extends React.Component {
     const currentPic = this.state.pictures.find(
       pic => pic.id === +event.target.id,
     );
-    console.log(currentPic);
 
     this.setState({ currentImage: currentPic });
   };

@@ -21,7 +21,6 @@ export default class ButtonLoadMore extends React.Component {
   callToApi = () => {
     const { name, onLoadMore } = this.props;
     const page = this.state.page;
-    console.log(page);
 
     return fetchAPI(name, page).then(data => onLoadMore(data.hits));
   };
