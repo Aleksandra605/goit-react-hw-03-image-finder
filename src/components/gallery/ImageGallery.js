@@ -5,9 +5,9 @@ import Loader from 'react-loader-spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import fetchAPI from '../services/fetchAPI';
-import ButtonLoadMore from './ButtonLoadMore';
-import Modal from './Modal';
-import sm from './modal-styles.module.css';
+import ButtonLoadMore from '../load-more/ButtonLoadMore';
+import Modal from '../modal-window/Modal';
+import sm from '../modal-window/modal-styles.module.css';
 
 export default class ImageGallery extends React.Component {
   state = {

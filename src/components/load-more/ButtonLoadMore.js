@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './common-styles.module.css';
+import s from '../gallery/common-styles.module.css';
 import fetchAPI from '../services/fetchAPI';
 
 export default class ButtonLoadMore extends React.Component {
