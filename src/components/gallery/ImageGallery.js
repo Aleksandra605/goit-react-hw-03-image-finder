@@ -22,11 +22,6 @@ export default class ImageGallery extends React.Component {
     const newName = this.props.name;
     const page = 1;
 
-    // window.scrollTo({
-    //   top: document.documentElement.scrollHeight,
-    //   behavior: 'smooth',
-    // });
-
     if (prevName !== newName) {
       this.setState({ status: 'pending', pictures: null });
 
